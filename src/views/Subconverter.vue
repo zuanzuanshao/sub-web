@@ -513,9 +513,13 @@ export default {
 
       this.$axios
         .post(shortUrlBackend, data, {
-          header: {
-            "Content-Type": "application/json; charset=utf-8"
-          }
+          headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "Origin": "https://psub-web.zuanzuan.me",
+          "Accept": "application/json"
+          },
+          // 确保发送凭证
+          withCredentials: false
         })
         .then(res => {
           if (res.data.Code === 1 && res.data.ShortUrl !== "") {
