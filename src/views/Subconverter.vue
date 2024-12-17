@@ -232,7 +232,7 @@ export default {
           Trojan: "trojan",
           Surge3: "surge&ver=3",
         },
-        backendOptions: [{ value: "http://127.0.0.1:25500/sub?" }],
+        backendOptions: [{ value: "https://psub.zuanzuan.me/sub?" }],
         remoteConfig: [
           {
             label: "universal",
@@ -507,13 +507,14 @@ export default {
 
       this.loading = true;
 
-      let data = new FormData();
-      data.append("longUrl", btoa(this.customSubUrl));
+      let data = {
+        url: btoa(this.customSubUrl)
+      };
 
       this.$axios
         .post(shortUrlBackend, data, {
           header: {
-            "Content-Type": "application/form-data; charset=utf-8"
+            "Content-Type": "application/json; charset=utf-8"
           }
         })
         .then(res => {
