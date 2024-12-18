@@ -526,7 +526,7 @@ export default {
         })
         .then(res => {
           if (res.data.status === 200 && res.data.key !== "") {
-            this.curtomShortSubUrl = shortUrlBackend + '/' + res.data.key;
+            this.curtomShortSubUrl = shortUrlBackend + res.data.key;
             this.$copyText(this.curtomShortSubUrl);
             this.$message.success("短链接已复制到剪贴板");
           } else {
